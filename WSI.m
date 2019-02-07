@@ -51,8 +51,8 @@ mx = max(y)./2;
      end
  end    
 
-%filename = 'handel9.wav';
-%audiowrite(filename,y,Fs); 
+%filename = 'awgn.wav';
+%audiowrite(filename,noisy,Fs); 
 mx1 = max(qpsk)./4;
 mx2 = max(qpsk)./2;
 mx3 = 3*(max(qpsk)./4);
@@ -94,11 +94,16 @@ plot(t,txsig);
 title('BPSK Modulated Signal in Time domain');
 xlabel('Time Axis');
 ylabel('Amplitude of the wave');
-%figure;
+figure;
 %plot(t,noisyMOD);
 %title('BPSK Modulated Signal with AWGN in Time domain');
 %xlabel('Time Axis');
 %ylabel('Amplitude of the wave');
+
+plot(t,txsigQ);
+title('QPSK Modulated Signal in Time domain');
+xlabel('Time Axis');
+ylabel('Amplitude of the wave');
 
 %p = snr(noisy,8192);
 %c = [-1 1];
@@ -118,3 +123,4 @@ noisyDEMODQ = pskdemod(noisyMODQ,N);
 
 bit_error_rate_BPSK = sum(y~=noisyDEMOD)/n
 bit_error_rate_QPSK = sum(y~=noisyDEMODQ)/n
+
